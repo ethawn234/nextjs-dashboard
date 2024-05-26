@@ -15,7 +15,10 @@ export default function Page() {
             <a href="https://nextjs.org/learn/" className="text-blue-500">
               Next.js Learn Course
             </a>
-            , brought to you by Vercel.You can now run next lint every time you want to run ESLint to catch errors. Once ESLint has been set up, it will also automatically run during every build (next build). Errors will fail the build, while warnings will not.
+            , brought to you by Vercel.You can now run next lint every time you
+            want to run ESLint to catch errors. Once ESLint has been set up, it
+            will also automatically run during every build (next build). Errors
+            will fail the build, while warnings will not.
           </p>
           <Link
             href="/login"
