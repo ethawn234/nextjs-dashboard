@@ -21,11 +21,11 @@ export async function fetchRevenue() {
     // Don't do this in production :)
 
     console.log('Fetching revenue data...');
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    await new Promise((resolve) => setTimeout(resolve, 4000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
-    console.log('Data fetch completed after 3 seconds.');
+    console.log('Data fetch completed after 4 seconds.');
 
     return data.rows;
   } catch (error) {
@@ -37,6 +37,9 @@ export async function fetchRevenue() {
 export async function fetchLatestInvoices() {
   noStore();
   try {
+    console.log('Fetching INVOICES data...');
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     const data = await sql<LatestInvoiceRaw>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
@@ -75,8 +78,8 @@ export async function fetchCardData() {
     ]);
 
     // "??" only checks the falsy values [undefined, null]
-    // "||" checks all falsy values. 
-    // In this case, we are getting counts, so 0 is a valid value.
+    // "||" checks all falsy values.
+    // In this case, we are getting counts, so 0 is a valid falsy value.
     const numberOfInvoices = Number(data[0].rows[0].count ?? '0');
     const numberOfCustomers = Number(data[1].rows[0].count ?? '0');
     const totalPaidInvoices = formatCurrency(data[2].rows[0].paid ?? '0');
